@@ -3,16 +3,14 @@ package com.example.restapi.exceptions;
 import com.example.restapi.models.responses.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class AppExceptionHandler {
 
     @ExceptionHandler({AppException.class})
-    public ResponseEntity<?> handleAppException(AppException ex) {
+    public ResponseEntity<ErrorResponse> handleAppException(AppException ex) {
         return switch (ex.getErrorCode()) {
             case TO_DO_APP_ERROR_001 -> {
                 ResponseEntity<String> unProcessableEntity = new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
