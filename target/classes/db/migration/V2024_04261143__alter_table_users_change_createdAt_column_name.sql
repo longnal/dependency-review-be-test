@@ -1,1 +1,0 @@
-ALTER TABLE users CHANGE createdAt created_at DATE;
